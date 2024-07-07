@@ -8,4 +8,12 @@
     <orderEntry type="jdk" jdkName="Poetry (course_work_6)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
+  <component name="TemplatesService">
+    <option name="TEMPLATE_CONFIGURATION" value="Django" />
+    <option name="TEMPLATE_FOLDERS">
+      <list>
+        <option value="$MODULE_DIR$/app_customers/templates" />
+      </list>
+    </option>
+  </component>
 </module>

@@ -1,0 +1,35 @@
+{% extends 'app_customers/base.html' %}
+{% load tags %}
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 g-5">
+                <img class="img-fluid " src="{{ object.avatar | media_filter }}" alt="">
+            </div>
+            <div class="col-md-6 g-5">
+                <h4 class="text-center">Анкета</h4>
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Фамилия: {{ object.last_name }}</h4>
+                    <h4 class="my-0 font-weight-normal">Имя: {{ object.first_name }}</h4>
+                    <h4 class="my-0 font-weight-normal">Отчество: {{ object.patronymic }}</h4>
+                    <h4 class="my-0 font-weight-normal">Заметки: {{ object.description }}</h4>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title pricing-card-title">{{ object.email }}</h4>
+                </div>
+            </div>
+            <div class="btn-group g-5">
+                <div class="col-md-6">
+                    <a class="btn btn-warning col-5" href="{% url 'customers:update' object.pk %}"
+                       role="button">Редактировать</a>
+
+                    <a class="btn btn-danger col-5" href="{% url 'customers:delete' object.pk %}"
+                       role="button">Удалить</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

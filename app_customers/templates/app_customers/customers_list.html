@@ -1,0 +1,39 @@
+{% extends 'app_customers/base.html' %}
+{% load tags %}
+{% block content %}
+
+
+
+    <div class="container bg-light rounded">
+
+        {% for object in object_list %}
+
+            <div class="card mb-1" style="">
+                <div class="row g-0">
+
+                    <div class="col-md-3">
+                        <img src="{{ object.avatar | media_filter }}"
+                             class="img-fluid rounded-start" style="width: 200px;"
+                             alt="">
+                    </div>
+
+                    <div class="col-md-5">
+                        <div class="card-body">
+                            <a href="{% url 'customers:view' object.pk %}"><h3
+                                    class="h5 card-title">{{ object }}</h3></a>
+                            <p class="card-text">{{ object.description }}</p>
+                            <p class="card-text"><small class="text-muted">{{ object.description }}</small>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+
+
+
+
+{% endblock %}
