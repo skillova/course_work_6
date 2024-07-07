@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'app_customers.apps.AppCustomersConfig',
 ]
 
 MIDDLEWARE = [
@@ -72,11 +74,16 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+# PostgreSQL, установить специальный пакет, для подключение Python-кода к БД: poetry add psycopg2-binary
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'course_work_6',  # Название БД
+        'USER': 'admin',  # Пользователь для подключения
+        'PASSWORD': 'admin',  # Пароль для этого пользователя
+        'HOST': '127.0.0.1',  # Адрес, на котором развернут сервер БД
+        'PORT': 5432,  # Порт, на котором работает сервер БД
     }
 }
 
@@ -115,9 +122,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
+# Отвечает за формирование адреса доступа к статике
 STATIC_URL = 'static/'
+
+# Отвечает за место на диске, откуда необходимо подгружать статику
+STATICFILES_DIRS = (BASE_DIR / 'static',)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Хранение всех загруженных файлов в отдельной папке.
+MEDIA_URL = "/media/"
+
+# Репозиторий, который используется в шаблонах и адресах для обращения к файлам
+MEDIA_ROOT = BASE_DIR / "media"
