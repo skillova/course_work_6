@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'app_customers.apps.AppCustomersConfig',
+    'app_mailings.apps.AppMailingsConfig',
 ]
 
 MIDDLEWARE = [
