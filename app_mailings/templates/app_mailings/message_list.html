@@ -1,0 +1,32 @@
+{% extends 'app_customers/base.html' %}
+{% block content %}
+
+
+
+    <div class="container bg-light rounded">
+
+        {% for object in object_list %}
+
+            <div class="card mb-1" style="">
+                <div class="row g-0">
+
+                    <div class="col-md-5">
+                        <div class="card-body">
+                            <a href="{% url 'messages:view' object.pk %}"><h3
+                                    class="h5 card-title">{{ object }}</h3></a>
+                            <p class="card-text">Тема: {{ object.title }}</p>
+                            <p class="card-text"><small>Содержание: {{ object.content }}</small>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+
+
+
+
+{% endblock %}

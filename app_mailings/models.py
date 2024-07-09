@@ -2,6 +2,8 @@ from django.db import models
 
 from app_customers.models import Customers
 
+NULLABLE = {'blank': True, 'null': True}
+
 STATUS_CHOICES = [
     ('created', 'Создана'),
     ('active', 'Запущена'),
