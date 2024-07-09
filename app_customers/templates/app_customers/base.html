@@ -25,9 +25,18 @@
                 <li>
                     <a class="nav-link px-2 text-white" href="{% url 'app_mailings:create' %}">Создать рассылку</a>
                 </li>
-                <li>
-                    <a class="nav-link px-2 text-white" href="{% url 'app_mailings:create' %}">Создать рассылку</a>
-                </li>
+                {% if user.is_authenticated %}
+                    <li>
+                        <a class="nav-link px-2 text-white" href="{% url 'users:logout' %}">Выход</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a class="nav-link px-2 text-white" href="{% url 'users:login' %}">Вход</a>
+                    </li>
+                    <li>
+                        <a class="nav-link px-2 text-white" href="{% url 'users:register' %}">Зарегестрироваться</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>

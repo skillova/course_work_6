@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'app_customers.apps.AppCustomersConfig',
     'app_mailings.apps.AppMailingsConfig',
+    'app_users.apps.AppUsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,10 @@ MEDIA_URL = "/media/"
 
 # Репозиторий, который используется в шаблонах и адресах для обращения к файлам
 MEDIA_ROOT = BASE_DIR / "media"
+
+# сообщаем проекту, что для авторизации используется новая модель
+AUTH_USER_MODEL = 'app_users.User'
+
+LOGIN_REDIRECT_URL = '/'
+
+LOGOUT_REDIRECT_URL = '/'
