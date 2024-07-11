@@ -50,11 +50,11 @@ class MassageCreateView(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
-        MailingFormset = inlineformset_factory(Massage, Mailing, form=MailingForm, extra=1)
+        mailing_formset = inlineformset_factory(Massage, Mailing, form=MailingForm, extra=1)
         if self.request.method == 'POST':
-            context_data['formset'] = MailingFormset(self.request.POST, instance=self.object)
+            context_data['formset'] = mailing_formset(self.request.POST, instance=self.object)
         else:
-            context_data['formset'] = MailingFormset(instance=self.object)
+            context_data['formset'] = mailing_formset(instance=self.object)
         return context_data
 
     def form_valid(self, form):
