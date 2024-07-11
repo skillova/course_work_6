@@ -1,5 +1,3 @@
-from django.db.models import Max
-import random
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
 from django.forms import inlineformset_factory

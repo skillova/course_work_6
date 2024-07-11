@@ -141,7 +141,7 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 # сообщаем проекту, что для авторизации используется новая модель
-AUTH_USER_MODEL = 'app_users.User'
+AUTH_USER_MODEL = 'users.User'
 
 LOGIN_REDIRECT_URL = '/'
 
