@@ -12,6 +12,7 @@ pillow = "^10.4.0"
 django = "4.2.2"
 apscheduler = "^3.10.4"
 python-dotenv = "^1.0.1"
+pytils = "^0.4.1"
 
 
 [build-system]
