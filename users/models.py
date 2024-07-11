@@ -1,56 +1,37 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-NULLABLE = {'blank': True, 'null': True}
 
-ACTIVE_CHOICES = [
-    (True, 'Активен'),
-    (False, 'Неактивен'),
-]
-
-
+# Create your models here.
 class User(AbstractUser):
     username = None
 
-    last_name = models.CharField(
-        max_length=50,
-        verbose_name="Фамилия",
-    )
-    first_name = models.CharField(
-        max_length=50,
-        verbose_name="Имя",
-    )
-    patronymic = models.CharField(
-        max_length=50,
-        verbose_name="Отчество",
-    )
-    avatar = models.ImageField(
-        upload_to='app_users/avatars',
-        verbose_name="Аватар",
-    )
-    email = models.EmailField(
-        unique=True,
-        verbose_name="Email",
-    )
-    is_active = models.BooleanField(
-        default=False,
-        help_text="Статус активации"
-    )
-    token = models.CharField(
-        max_length=100,
-        verbose_name='Токен',
-        **NULLABLE,
-    )
+    email = models.EmailField(unique=True, verbose_name='Почта')
 
-    # переопределение полей
+    first_name = models.CharField(max_length=150, verbose_name='Имя')
+
+    last_name = models.CharField(max_length=150, verbose_name='Фамилия')
+
+    avatar = models.ImageField(upload_to='users/photo', verbose_name='Аватар', blank=True, null=True,
+                               help_text='Загрузите свой аватар')
+    phone = models.CharField(max_length=35, verbose_name='Номер телефона', blank=True,
+                             null=True, help_text='Введите номер телефона')
+    country = models.CharField(max_length=35, verbose_name='Страна', blank=True,
+                               null=True, help_text='Введите страну')
+    token = models.CharField(max_length=100, verbose_name='Токен', blank=True, null=True, )
+
+    is_block = models.BooleanField(default=False, verbose_name='Блокировка пользователя')
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
     class Meta:
-        #  Настройка для наименования одного и набора объектов
-        verbose_name = "Пользователь"
-        verbose_name_plural = "Пользователи"
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
+        permissions = [
+            ('view_users', 'Может просматривать список пользователей сервиса.'),
+                       ('change_is_block', 'Может блокировать пользователей сервиса.')
+                       ]
 
     def __str__(self):
-        #  Строковое отображение объекта
-        return f"{self.last_name} {self.first_name} {self.patronymic} {self.email}"
+        return f'{self.email}'
