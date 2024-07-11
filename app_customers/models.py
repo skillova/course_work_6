@@ -1,5 +1,7 @@
 from django.db import models
 
+from users.models import User
+
 NULLABLE = {'blank': True, 'null': True}
 
 
@@ -28,6 +30,12 @@ class Customers(models.Model):
     description = models.TextField(
         verbose_name="Описание",
         **NULLABLE,
+    )
+    owner = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        **NULLABLE,
+        verbose_name='Пользователь',
     )
 
     class Meta:

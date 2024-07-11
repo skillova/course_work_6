@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 
-from app_users.models import User
+from users.models import User
 
 
 class UserRegisterForm(UserCreationForm):
